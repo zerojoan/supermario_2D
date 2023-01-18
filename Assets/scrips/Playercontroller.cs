@@ -6,18 +6,41 @@ public class Playercontroller : MonoBehaviour
 {
      int playerHealth = 3; 
      public float playerSeed= 5.5f;
+     public float jumpForce = 3f;
+
      string texto = "Hello world";
-     bool isGrounded = false;
+     private SpriteRenderer SpriteRenderer;
+     private Rigidbody2D rBody; 
+     private GroundSensor sensor;
+     float horizontal;
     // Start is called before the first frame update                                                                                              
     void Start() 
     {
+        SpriteRenderer = GetComponent<SpriteRenderer>();
+        rBody = GetComponent<Rigidbody2D>();
         playerHealth = 10;
         Debug.Log(texto);
+        sensor = GameObject.Find("GroundSensor").GetComponent<GroundSensor>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += new Vector3(Input.GetAxis("Horizontal"), 0, 0) * playerSeed* Time.deltaTime;
+        horizontal = Input.GetAxis("Horizontal");
+        transform.position += new Vector3(horizontal, 0, 0) * playerSeed* Time.deltaTime;
+
+        if(horizontal <0)
+        {
+            SpriteRenderer.flipX = true;
+        }
+        else if (horizontal > 0)
+        {
+            SpriteRenderer.flipX = false;
+        }
+
+        if(Input.GetButtonDown("Jump") && sensor.isGrounded) 
+        {
+            rBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        }
     }
 }
