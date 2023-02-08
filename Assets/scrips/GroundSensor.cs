@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class GroundSensor : MonoBehaviour
 {
-   private PlayerController controller;
+   private Playercontroller controller;
 
    public bool isGrounded;
-   volid private void Awake() 
+   private void Awake() 
    {
-      controller = GetComponentInparent<PlayerController>();
+      controller = GetComponentInParent<Playercontroller>();
    }
 
    void OnTriggerEnter2D(Collider2D other)
    {
     isGrounded = true;
-    controller.anim.SetBool("isJumping". false);
+    controller.anim.SetBool("isJumping", false);
    }
     void OnTriggerStay2D(Collider2D other)
    {
@@ -24,6 +24,6 @@ public class GroundSensor : MonoBehaviour
    void OnTriggerExit2D(Collider2D other)
    {
     isGrounded = false;
-    controller.anim.SetBool("isJumping". false);
+    controller.anim.SetBool("isJumping", false);
    }
 }
