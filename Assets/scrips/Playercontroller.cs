@@ -26,7 +26,6 @@ public class Playercontroller : MonoBehaviour
         Debug.Log(texto);
     }
 
-    // Update is called once per frame
     void Update()
     {
         horizontal = Input.GetAxis("Horizontal");
