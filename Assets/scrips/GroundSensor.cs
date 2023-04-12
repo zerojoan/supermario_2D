@@ -9,6 +9,7 @@ public class GroundSensor : MonoBehaviour
    public bool isGrounded;
 
    SFXManager sfxManager;
+
    private void Awake() 
    {
       controller = GetComponentInParent<Playercontroller>();
@@ -29,13 +30,14 @@ public class GroundSensor : MonoBehaviour
       Enemy goomba = other.gameObject.GetComponent<Enemie>();
       goomba.Die();
     }
-   {
-   void OnTriggerStay2D(Collider2D other)
    }
-    
+   
+   private void OnTriggerStay2D(Collider2D other) 
    {
     isGrounded = true;
    }
+   
+   
    void OnTriggerExit2D(Collider2D other)
    {
     isGrounded = false;

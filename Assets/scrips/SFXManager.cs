@@ -17,11 +17,11 @@ public class SFXManager : MonoBehaviour
 
     public void GoombaDeath() 
     {
-        source.PlayOneShot(goombaDeath)
+        source.PlayOneShot(goombaDeath);
     }
 
      public void MarioDeath() 
     {
-        source.PlayOneShot(marioDeath)
+        source.PlayOneShot(marioDeath);
     }
 }
